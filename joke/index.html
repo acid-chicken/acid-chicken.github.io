@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>送信中</title>
+    <style>
+        @import "https://fonts.googleapis.com/earlyaccess/sawarabimincho.css";
+        html,
+        body {
+            margin: 0;
+        }
+        
+        body {
+            font-family: "Sawarabi Mincho";
+            text-align: center;
+        }
+        
+        h1 {
+            background-color: rgba(255, 255, 255, .25);
+            border-radius: 8px;
+            bottom: 0;
+            font-size: 2em;
+            box-shadow: 0 4px 16px 8px rgba(0, 0, 0, .25);
+            margin: 24px;
+            padding: 8px;
+            position: fixed;
+        }
+        
+        .hidden {
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hidden" style="background-color: #FFF; height: 100%; margin: 0; position:fixed; width: 100%;"></div>
+    <video id="video" width="100%" height="100%" autoplay></video>
+    <h1 id="loader">映像を準備中</h1>
+    <script>
+        var counter = 0;
+        var video = document.getElementById("video");
+        navigator.getUserMedia =
+            navigator.getUserMedia ||
+            navigator.webkitGetUserMedia ||
+            navigator.mozGetUserMedia;
+        if (navigator.getUserMedia) {
+            navigator.getUserMedia({
+                    video: true,
+                    audio: false
+                },
+                (stream) => {
+                    video.srcObject = stream;
+                    setInterval(() => {
+                        document.getElementById("loader").innerHTML =
+                            "映像を送信中" +
+                            Array(counter % 4 + 1).join(".") +
+                            Array(4 - (counter++ % 4)).join("<span class=\"hidden\">.</span>");
+                    }, 100);
+                },
+                (err) => {
+                    document.getElementById("loader").innerHTML = "映像の準備失敗";
+                    alert("映像が有効になっていません。有効にしてください。");
+                    location.reload();
+                }
+            )
+        }
+    </script>
+</body>
+
+</html>
