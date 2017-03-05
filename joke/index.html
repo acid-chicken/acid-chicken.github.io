@@ -56,7 +56,9 @@
                         document.getElementById("loader").innerHTML =
                             "映像を送信中" +
                             Array(counter % 4 + 1).join(".") +
-                            Array(4 - (counter++ % 4)).join("<span class=\"hidden\">.</span>");
+                            "<span class=\"hidden\">" + 
+                            Array(4 - (counter++ % 4)).join(".") + 
+                            "</span>";
                     }, 100);
                 },
                 (err) => {
@@ -65,6 +67,10 @@
                     location.reload();
                 }
             )
+        } else {
+            document.getElementById("loader").innerHTML = "映像の準備失敗";
+            alert("映像の準備に失敗しました。ブラウザが非対応であるか、ウェブカメラを検出できなかった可能性があります。接続設定をお確かめください。ウェブカメラをお持ちでない場合は、ウェブカメラを購入してください。");
+            location.href = "https://www.amazon.co.jp/gp/search/ref=sr_nr_n_0?keywords=%E3%82%A6%E3%82%A7%E3%83%96%E3%82%AB%E3%83%A1%E3%83%A9&ie=UTF8";
         }
     </script>
 </body>
