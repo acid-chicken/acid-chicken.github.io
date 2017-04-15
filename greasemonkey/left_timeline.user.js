@@ -6,6 +6,12 @@
 // @version     1
 // @grant       none
 // ==/UserScript==
-$(function () {
-  $('.column:eq(2)').insertBefore('.column:eq(0)');
+$(() => {
+  $('.column:eq(0)').attr('id', 'left_timeline_to');
+  setInterval(() => {
+    if(!($('#left_timeline_from').length)) {
+      $('.column:eq(2)').attr('id', 'left_timeline_from');
+      $('#left_timeline_from').insertBefore('#left_timeline_to')
+    }
+  }, 16);
 });
