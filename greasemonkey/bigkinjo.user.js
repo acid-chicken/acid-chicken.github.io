@@ -4,7 +4,7 @@
 // @description アメちゃんを左下にピタッ！ご近所さんを真ん中にドーン！
 // @include     https://mstdn.osaka/*
 // @require     https://code.jquery.com/jquery-1.11.1.min.js
-// @version     1.1
+// @version     1.2
 // @grant       none
 // ==/UserScript==
 $(document).on('ready page:load',() => {
