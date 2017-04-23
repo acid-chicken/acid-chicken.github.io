@@ -16,7 +16,6 @@ $(document).on('ready page:load',() => {
     $('.drawer__pager').css('flex', '0 0 237px'); // 書き込み欄が消えんのを防ぐで
     $('.ui').css({
       'background-image': 'url(//mstdn.osaka/assets/background-photo-4d5afc27a5805bfb866b8f7f5067c66af99595cdc8dc46ece07fb5ff375cc3d5.png)',
-      'background-position': 'right bottom',
       'background-repeat': 'no-repeat',
       'background-size': 'cover'
     });
