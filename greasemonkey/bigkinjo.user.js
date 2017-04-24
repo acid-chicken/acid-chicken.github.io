@@ -4,7 +4,7 @@
 // @description アメちゃんを左下にピタッ！ご近所さんを真ん中にドーン！
 // @include     https://mstdn.osaka/*
 // @require     https://code.jquery.com/jquery-1.11.1.min.js
-// @version     1.4
+// @version     1.4.1
 // @grant       none
 // ==/UserScript==
 const home = '<a class="drawer__tab" href="javascript:Home()" title="ウチの表示切り替え"><i class="fa fa-fw fa-home"></i></a>';
@@ -30,7 +30,8 @@ $(document).on('ready page:load',() => {
     setInterval(() => {
       if (window.matchMedia('(min-width: 1025px)').matches) { // ページを移動すると元に戻ってしまうのを防ぐで
         $('.columns-area').children().css('flex', '1'); // 全体をflexで伸びるようにすんで
-        $('.column:eq(2)').css('flex', '2'); // 近所のサイズを2倍にすんで
+        if ($('#home').css('display') === 'none') $('.column:eq(2)').css('flex', '3'); // ウチがなかったら近所のサイズを3倍にすんで
+        else $('.column:eq(2)').css('flex', '2'); // ウチがあったらやっぱり2倍にすんで
       }
     }, 16);
   }
