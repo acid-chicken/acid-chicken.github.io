@@ -4,11 +4,11 @@
 // @description アメちゃんを左下にピタッ！ご近所さんを真ん中にドーン！
 // @include     https://mstdn.osaka/*
 // @require     https://code.jquery.com/jquery-1.11.1.min.js
-// @version     1.4.1
+// @version     1.5
 // @grant       none
 // ==/UserScript==
 const home = '<a class="drawer__tab" href="javascript:Home()" title="ウチの表示切り替え"><i class="fa fa-fw fa-home"></i></a>';
-const script = '<script>\n  function Home() {\n    if ($(\'#home\').css(\'display\') === \'none\') $(\'#home\').show()\n    else $(\'#home\').hide()\n  }\n</script>';
+const script = '<script>function Home(){$(\'#home\').toggle(\'slow\')}</script>';
 $(document).on('ready page:load',() => {
   if (window.matchMedia('(min-width: 1025px)').matches) {
     $('body').append(script); // ウチのスクリプトを追加すんで
